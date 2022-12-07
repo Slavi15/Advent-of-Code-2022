@@ -96,7 +96,7 @@ async function solvePartTwo() {
 };
 
 function init() {
-    // solvePartOne();
+    solvePartOne();
     solvePartTwo();
 };
 
