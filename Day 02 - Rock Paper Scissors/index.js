@@ -1,11 +1,5 @@
 const fs = require('node:fs/promises');
 
-const points = {
-    'X': 1,
-    'Y': 2,
-    'Z': 3
-};
-
 async function readInput(file) {
     const rawData = await fs.readFile(file, { encoding: 'utf-8' });
     return rawData.trim().split('\r\n');
@@ -14,6 +8,12 @@ async function readInput(file) {
 async function solvePartOne() {
     const data = await readInput('input.txt');
     const output = [];
+
+    const points = {
+        'X': 1,
+        'Y': 2,
+        'Z': 3
+    };
 
     data.forEach(moves => {
         const [opponentMove, myMove] = moves.split(' ');
@@ -54,30 +54,36 @@ async function solvePartTwo() {
     const data = await readInput('input.txt');
     const output = [];
 
+    const points = {
+        'X': 0,
+        'Y': 3,
+        'Z': 6
+    };
+
     data.forEach(moves => {
         const [opponentMove, myMove] = moves.split(' ');
         let result = 0;
 
         if (opponentMove === 'A' && myMove === 'Z') {
-            result += 8;
+            result += points[myMove] + 2
         } else if (opponentMove === 'A' && myMove === 'Y') {
-            result += 4;
+            result += points[myMove] + 1;
         } else if (opponentMove === 'A' && myMove === 'X') {
             result += 3;
         };
 
         if (opponentMove === 'B' && myMove === 'Z') {
-            result += 9;
+            result += points[myMove] + 3;
         } else if (opponentMove === 'B' && myMove === 'Y') {
-            result += 5;
+            result += points[myMove] + 2;
         } else if (opponentMove === 'B' && myMove === 'X') {
             result += 1;
         };
 
         if (opponentMove === 'C' && myMove === 'Z') {
-            result += 7;
+            result += points[myMove] + 1;
         } else if (opponentMove === 'C' && myMove === 'Y') {
-            result += 6;
+            result += points[myMove] + 3;
         } else if (opponentMove === 'C' && myMove === 'X') {
             result += 2;
         };
