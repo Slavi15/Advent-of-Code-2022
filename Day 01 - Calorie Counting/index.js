@@ -1,7 +1,7 @@
 const fs = require('node:fs/promises');
 
 async function readInput(file) {
-    const rawData = await fs.readFile(file, { encoding: 'utf8' });
+    const rawData = await fs.readFile(file, { encoding: 'utf-8' });
     return rawData.trim().split('\r\n');
 };
 
